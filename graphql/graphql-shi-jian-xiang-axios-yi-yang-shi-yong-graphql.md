@@ -10,7 +10,7 @@
 
 但graphiql提供的[live demo](http://graphql.org/swapi-graphql)基本打不开，难道刚接触graphql就要自己实现graphql的server端？ 好在github用graphql写了一套api，我们可以去[这里](https://developer.github.com/v4/explorer/)，登陆后即可体验一把graphql。
 
-![](.gitbook/assets/image.png)
+![](../.gitbook/assets/image.png)
 
 关于graphql的基础知识可以去这里[看看](http://graphql.cn/learn/)
 
@@ -26,7 +26,7 @@ graphql在前端实现有以下方案。
 
 从npm download数量上看Apollo Client是最多的，并且Apollo也有[服务端](https://www.apollographql.com/server) 的解决方案，所以这里选择Apollo Client作为graphql的client端 apollo client对于web 框架都有具体的实现，但是我更希望能像axios那样去使用graphql，而不是每套web框架都要去学一下具体实现，那样会折腾死自己。
 
-![](.gitbook/assets/image%20%281%29.png)
+![](../.gitbook/assets/image%20%281%29.png)
 
 #### 初始化项目
 
@@ -148,5 +148,5 @@ export const search = (params) => client.query({query: searchGql.search, variabl
 
 run的时候有记得把token换成自己的，因为我的token有可能已经失效。
 
-![](.gitbook/assets/image%20%282%29.png)
+![](../.gitbook/assets/image%20%282%29.png)
 
