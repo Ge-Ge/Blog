@@ -43,6 +43,21 @@ graphql在前端实现有以下方案。
 
 ![](.gitbook/assets/image%20%281%29.png)
 
+### 初始化项目
+
+```text
+// 使用vue-cli初始化项目
+vue init webpack-simple my-project
+npm i
+```
+
+**安装graphql**
+
+```text
+npm i apollo-cache-inmemory apollo-client apollo-link apollo-link-http 
+npm i graphql graphql-tag
+```
+
 **项目结构如下**
 
 ```text
@@ -61,6 +76,90 @@ graphql在前端实现有以下方案。
 │       └── graphql.js                    // 对Apollo-client封装
 └── webpack.config.js
 ```
+
+### apollo-client
+
+接下来对apollo-client进行封装，加上中间件（实现类似于axios拦截器的效果）。 graphql.js
+
+```text
+import ApolloClient from 'apollo-client'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { HttpLink } from 'apollo-link-http'
+import { onError } from 'apollo-link-error'
+import { ApolloLink, from } from 'apollo-link'
+
+const token = '598ffa46592d1c7f57ccf8173e47290c6db0d549'
+
+const Middleware = new ApolloLink((operation, forward) => {
+  // request时对请求进行处理
+  console.log('Middleware', operation, forward)
+})
+const Afterware = new ApolloLink((operation, forward) => {
+  return forward(operation).map(response => {
+    // 服务器返回数据
+    console.log('Afterware--response', response)
+    return response
+  })
+})
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors)
+    graphQLErrors.map(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+      ),
+    );
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+});
+
+const httpLink = new HttpLink({
+  uri: 'https://api.github.com/graphql', // 配置请求url 
+  headers: {                             // 配置header
+    Authorization: `Bearer ${token}`
+  }
+})
+const cache = new InMemoryCache()       // 缓存
+export default new ApolloClient({
+  link: from([Middleware, Afterware, errorLink, httpLink]),
+  cache
+})
+```
+
+配置webpack支持.graphql文件
+
+```text
+     // 在rules下添加以下规则
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
+      }
+```
+
+search.graphql
+
+```text
+query searchR ($keyword: String!) {
+    search (query: $keyword , type: REPOSITORY){
+        userCount
+    }
+}
+```
+
+在/graphql/index.js export所有接口
+
+```text
+import client from '../utils/graphql'
+// import gql from 'graphql-tag'
+import * as searchGql from './search.graphql'
+/** searchGql模块 **/
+export const search = (params) => client.query({query: searchGql.search, variables: params})
+```
+
+到这里我们已经可以直接调用/graphql/下导出的function
+
+### 使用github接口实现一个简单的搜索功能
+
+具体实现就不贴出来了，全部代码已经放到[github](https://github.com/Ge-Ge/graphql_demo)，欢迎star。
 
 run的时候有记得把token换成自己的，因为我的token有可能已经失效。
 
