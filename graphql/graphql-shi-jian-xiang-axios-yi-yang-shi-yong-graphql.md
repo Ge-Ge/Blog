@@ -1,8 +1,6 @@
 # Graphql实践——像axios一样使用Graphql
 
-
-
-#### Graphql尝鲜
+## Graphql尝鲜
 
 在只学习graphql client端知识的过程中，我们常常需要一个graphql ide来提示graphql语法，以及实现graphql的server端来进行练手。 graphql社区提供了[graphiql](https://github.com/graphql/graphiql)让我们使用
 
@@ -14,7 +12,7 @@
 
 关于graphql的基础知识可以去这里[看看](http://graphql.cn/learn/)
 
-#### graphql client端选择
+## graphql client端选择
 
 graphql在前端实现有以下方案。
 
@@ -28,7 +26,7 @@ graphql在前端实现有以下方案。
 
 ![](../.gitbook/assets/image%20%281%29.png)
 
-#### 初始化项目
+## 初始化项目
 
 ```text
 // 使用vue-cli初始化项目
@@ -62,7 +60,7 @@ npm i graphql graphql-tag
 └── webpack.config.js
 ```
 
-#### apollo-client
+## apollo-client
 
 接下来对apollo-client进行封装，加上中间件（实现类似于axios拦截器的效果）。 graphql.js
 
@@ -142,7 +140,7 @@ export const search = (params) => client.query({query: searchGql.search, variabl
 
 到这里我们已经可以直接调用/graphql/下导出的function
 
-#### 使用github接口实现一个简单的搜索功能
+## 使用github接口实现一个简单的搜索功能
 
 具体实现就不贴出来了，全部代码已经放到[github](https://github.com/Ge-Ge/graphql_demo)，欢迎star。
 
