@@ -148,3 +148,10 @@ run的时候有记得把token换成自己的，因为我的token有可能已经�
 
 ![](../.gitbook/assets/image%20%282%29.png)
 
+# TODO
+## apollo-client 翻页
+1. 使用 fetchMore进行翻页
+## apollo-client 缓存
+参考资料:
+[Apollo Client API reference](https://www.apollographql.com/docs/react/api/apollo-client.html)
+[Apollo Pagination](https://www.apollographql.com/docs/react/features/pagination.html) 
