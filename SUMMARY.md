@@ -19,3 +19,6 @@
 ## Graphql
 
 * [Graphql实践——像axios一样使用Graphql](graphql/graphql-shi-jian-xiang-axios-yi-yang-shi-yong-graphql.md)
+
+## mysql
+* [mysql练习](mysql/mysql练习/mysql练习.md)
