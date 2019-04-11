@@ -1,0 +1,5 @@
+_book/
+.idea/
+.DS_Store
+*.sw*
+*.un~

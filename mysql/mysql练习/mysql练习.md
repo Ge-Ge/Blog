@@ -53,3 +53,12 @@ select sc.cid, count(*) from sc group by sc.cid;
 select cid,count(sid) from sc group by cid having count(sid)>2 order by count(sid) desc,cid ASC;
 
 ```
+查询每门课程被选修的学生数
+```sql
+select sc.cid, count(*) from sc group by sc.cid;
+```
+统计每门课程的学生选修人数（超过2人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列 
+```sql
+select cid,count(sid) from sc group by cid having count(sid)>2 order by count(sid) desc,cid ASC;
+
+```
