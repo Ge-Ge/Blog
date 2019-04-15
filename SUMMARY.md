@@ -3,18 +3,17 @@
 * [苍穹青空的博客](README.md)
 
 
-## node.js
-
-* [site.js开发所得](node.js/site.js开发所得/README.md)
-  * [带交互的命令行](node.js/site.js开发所得/写条带交互的命令行.md)
-  * [编写测试用例](node.js/site.js开发所得/README.md)
-  * [发布到npm](node.js/site.js开发所得/README.md)
-  * [TravisCI持续集成和Coveralls测试覆盖率检测](node.js/site.js开发所得/README.md)
+## js
+* [交互式命令行开发](js/交互的命令行开发.md)
+* [npm包开发](js/npm包开发/README.md)
+  * [编写测试用例](js/npm包开发/编写测试用例.md)
+  * [TravisCI持续集成和Coveralls测试覆盖率检测](js/npm包开发/TravisCI和Coveralls.md)
+  * [发布到npm](js/npm包开发/发布到npm.md)
 
 
 ## docker
 
-* [还为重复安装开发环境而烦吗? 这或许是更好的解决方案 —— docker](docker/docker搭建开发环境.md)
+* [docker搭建环境 —— docker](docker/docker搭建开发环境.md)
 
 ## Graphql
 
