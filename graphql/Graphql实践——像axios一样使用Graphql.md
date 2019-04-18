@@ -103,7 +103,20 @@ const httpLink = new HttpLink({
 const cache = new InMemoryCache()       // 缓存
 export default new ApolloClient({
   link: from([Middleware, Afterware, errorLink, httpLink]),
-  cache
+  cache,
+  defaultOptions: {
+    watchQuery: {
+      fetchPolicy: 'cache-and-network',
+      errorPolicy: 'ignore',
+    },
+    query: {
+      fetchPolicy: 'network-only',
+      errorPolicy: 'all',
+    },
+    mutate: {
+      errorPolicy: 'all'
+    }
+  }
 })
 ```
 
@@ -117,7 +130,7 @@ export default new ApolloClient({
         loader: 'graphql-tag/loader',
       }
 ```
-
+## 使用github接口实现一个简单的搜索功能
 search.graphql
 
 ```text
@@ -139,12 +152,12 @@ export const search = (params) => client.query({query: searchGql.search, variabl
 ```
 
 到这里我们已经可以直接调用/graphql/下导出的function
-
-## 使用github接口实现一个简单的搜索功能
-
 具体实现就不贴出来了，全部代码已经放到[github](https://github.com/Ge-Ge/graphql_demo)，欢迎star。
 
 run的时候有记得把token换成自己的，因为我的token有可能已经失效。
 
 ![](../.gitbook/assets/image%20%282%29.png)
 
+参考资料:
+[Apollo Client API reference](https://www.apollographql.com/docs/react/api/apollo-client.html)
+[Apollo Pagination](https://www.apollographql.com/docs/react/features/pagination.html) 
