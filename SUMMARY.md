@@ -1,4 +1,4 @@
-# Table of contents
+# 目录
 
 * [苍穹青空的博客](README.md)
 
@@ -15,7 +15,7 @@
 
 * [docker搭建环境 —— docker](docker/docker搭建开发环境.md)
 
-## Graphql
+## graphql
 
 * [Graphql实践——像axios一样使用Graphql](graphql/Graphql实践——像axios一样使用Graphql.md)
 * [Graphql实践——分页](graphql/Graphql实践——分页与缓存.md)
